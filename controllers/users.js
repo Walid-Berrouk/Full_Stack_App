@@ -20,6 +20,22 @@ function getUsers(req, res) {
     }
 }
 
+function getUser(req, res) {
+    try {
+        User.find({ _id: req.params.id})
+        .then(function(dbUser) {
+            console.log(dbUser);
+            res.send(dbUser)
+        })
+        .catch(function(err) {
+            console.log(err);
+            throw new Error(err)
+        });
+    } catch (err) {
+        res.send(err.message)
+    }
+}
+
 async function addUser(req, res) {
     try {
         const salt = await bcrypt.genSalt(10)
@@ -46,4 +62,5 @@ async function addUser(req, res) {
 module.exports = {
     getUsers,
     addUser,
+    getUser
 }

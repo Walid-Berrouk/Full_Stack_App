@@ -3,7 +3,7 @@ const cors =require("cors")
 const jwt = require("jsonwebtoken")
 const logger = require("morgan")
 const { getProducts, addProduct } = require("./controllers/products")
-const { getUsers, addUser } = require("./controllers/users")
+const { getUsers, addUser, getUser } = require("./controllers/users")
 
 
 // Init the app
@@ -26,7 +26,7 @@ app.use(logger())
 
 // Users
 app.get('/users', getUsers)
-// app.get('/user/:id', getUser)
+app.get('/user/:id', getUser)
 app.post('/user', addUser)
 
 // Products
