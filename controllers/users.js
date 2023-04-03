@@ -1,6 +1,4 @@
-let mongoose = require("mongoose");
 let User = require("../models/users");
-mongoose.connect("mongodb+srv://walid:123@gomycodecluster.enyduws.mongodb.net/showcasedb?retryWrites=true&w=majority", { useNewUrlParser: true });
 
 const bcrypt = require("bcrypt");
 
@@ -38,6 +36,8 @@ function getUser(req, res) {
 
 async function addUser(req, res) {
     try {
+        console.log(req.body)
+
         const salt = await bcrypt.genSalt(10)
         req.body.password = await bcrypt.hash(req.body.password, salt)
 

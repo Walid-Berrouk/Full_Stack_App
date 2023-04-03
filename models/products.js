@@ -9,15 +9,11 @@ let ProductSchema = new Schema ({
     },
     description: {
         type: String,
-        required: false,
+        required: true,
     },
     link: {
         type: String,
-    },
-    image: {
-        data: Buffer,
-        contentType: String,
-        // required: true
+        required: true,
     },
 })
 
